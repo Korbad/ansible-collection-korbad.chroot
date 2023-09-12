@@ -1,7 +1,7 @@
 
 - name: Generate device_dict fact and refresh ansible facts for devices and mounts
   include_role:
-    name: device_dict
+    name: korbad.tools.device_dict
 
 - name: Ensure a fact exists for the boot and esp mount
   set_fact:
@@ -22,6 +22,6 @@
 
 - name: Generate device_dict fact
   include_role:
-    name: device_dict
+    name: korbad.tools.device_dict
   when: mount_chroot_efi is not skipped
 

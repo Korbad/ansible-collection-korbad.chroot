@@ -1,6 +1,6 @@
 - name: Ensure the partition is mounted
   include_role:
-    name: mounted_partition
+    name: korbad.tools.mounted_partition
   vars:
     partition_number: "{{ root_partition_number }}"
   when: mounts | list | length | int == 0
