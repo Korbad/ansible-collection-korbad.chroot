@@ -1,0 +1,5 @@
+- name: Ensure {{ package_name }} is installed to chroot at {{ arch_chroot_mount_path }}
+  command:
+    cmd: "arch-chroot {{ arch_chroot_mount_path }} pacman -S --noconfirm --needed {{ package_name }}"
+  register: package_result
+  become: true
