@@ -14,4 +14,4 @@
     mode: '0644'
   become: true
 
-- include_tasks: custom_boot_entries.yml
+- include_tasks: ensure_microcode_files_exist.yml
