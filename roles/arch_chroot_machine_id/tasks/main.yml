@@ -5,4 +5,4 @@
 
 - name: Set arch_chroot_machine_id fact
   set_fact:
-    arch_chroot_machine_id: "{{ machine_id_result['content'] | b64decode }}"
+    arch_chroot_machine_id: "{{ machine_id_result['content'] | b64decode | trim }}"
