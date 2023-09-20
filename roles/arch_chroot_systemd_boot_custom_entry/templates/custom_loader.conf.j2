@@ -1,9 +1,11 @@
 title {{ boot_menu_entry_title }}
-{% if version is defined %}version {{ version }}{% endif %}
-{% if machine_id is defined %}machine-id {{ machine_id }}{% endif %}
+{% if version is defined %}version {{ version }}
+{% endif %}
+{% if machine_id is defined %}machine-id {{ machine_id }}
+{% endif %}
 linux {{ linux_kernel_path }}
-{% for microcode_path in microcode_paths %}
-initrd {{ microcode_path }}
+{% for microcode_name in microcode_install_list %}
+initrd /{{ microcode_name }}.img
 {% endfor %}
 initrd {{ initramfs_image_path }}
 options root=PARTUUID={{ root_partition_uuid }} rw
