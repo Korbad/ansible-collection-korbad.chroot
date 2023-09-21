@@ -1,0 +1,9 @@
+---
+dependencies:
+#  - role: korbad.chroot.arch_chroot_dracut
+#  - role: korbad.chroot.arch_chroot_systemd_boot
+  - role: korbad.chroot.kernel
+    kernel_name: linux
+#  - role: korbad.chroot.arch_chroot_microcode_updates
+#  - role: korbad.chroot.arch_chroot_kernels
+#    boot_title_hostname: "{{ arch_chroot_hostname }}"
