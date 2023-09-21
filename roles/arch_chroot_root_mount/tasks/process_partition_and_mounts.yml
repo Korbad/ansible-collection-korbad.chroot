@@ -10,6 +10,8 @@
     that:
       - mounts | list | length | int > 0
 
-- name: Set fact for the arch chroot mount path
+- name: "Set fact for the arch chroot mount path at {{ first_mount_point }}"
   set_fact:
-    arch_chroot_mount_path: "{{ mounts | first }}"
+    arch_chroot_mount_path: "{{ first_mount_point }}"
+  vars:
+    first_mount_point: "{{ mounts | first }}"
