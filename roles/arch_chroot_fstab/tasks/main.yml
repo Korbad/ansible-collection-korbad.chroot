@@ -6,7 +6,7 @@
     mode: '0755'
   become: true
 
-- name: Generate filesystem table (fstab) for arch chroot at {{ arch_chroot_mount_path }}
+- name: Template filesystem table (fstab) for arch chroot at {{ arch_chroot_mount_path }}
   template:
     src: fstab.j2
     dest: "{{ arch_chroot_mount_path }}/etc/fstab"
@@ -15,7 +15,7 @@
   vars:
     fstab_entries:
       - device: /dev/disk/by-id/{{ disk_by_id }}-part{{ boot_partition_number }}
-        mount_point: /boot
+        mount_point: "{{ esp_mount_path }}"
         type: vfat
         options: defaults
         dump: 0
