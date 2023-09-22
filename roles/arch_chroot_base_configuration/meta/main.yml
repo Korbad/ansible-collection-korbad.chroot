@@ -6,9 +6,9 @@ dependencies:
   - role: korbad.chroot.arch_chroot_locale
   - role: korbad.chroot.arch_chroot_fstab
   - role: korbad.chroot.arch_chroot_hosts_file
-#  - role: korbad.chroot.arch_chroot_reflector
-#  - role: korbad.chroot.arch_chroot_ssh_install
-#  - role: korbad.chroot.arch_chroot_optional_packages
-#  - role: korbad.chroot.arch_chroot_sshd_config
-#  - role: korbad.chroot.arch_chroot_korbad_user
-#  - role: korbad.chroot.arch_chroot_auto_login
+  - role: korbad.chroot.arch_chroot_reflector
+  - role: korbad.chroot.arch_chroot_ssh_install
+  - role: korbad.chroot.arch_chroot_optional_packages
+  - role: korbad.chroot.arch_chroot_sshd_config
+  - role: korbad.chroot.arch_chroot_korbad_user
+  - role: korbad.chroot.arch_chroot_auto_login
