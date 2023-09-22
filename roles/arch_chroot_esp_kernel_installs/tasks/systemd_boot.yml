@@ -1,0 +1,9 @@
+- name: "Ensure that systemd-boot entry exists for {{ kernel_version }}"
+  include_role:
+    name: arch_chroot_systemd_boot_custom_entry
+  vars:
+    machine_id: "{{ arch_chroot_machine_id }}"
+
+- name: "Ensure that a default entry exists for systemd-boot"
+  include_role:
+    name: arch_chroot_systemd_boot_default_entry
