@@ -13,7 +13,7 @@
   command:
     cmd: "rm -rf {{ item.path }}"
   with_items: "{{ files_to_delete.files }}"
-  when: "'{{ arch_chroot_esp_mount_path }}' not in item.path"
+   when: "'{{ arch_chroot_mount_path }}/efi' not in item.path"
   become: true
   vars:
     ansible_ssh_pipelining: true
