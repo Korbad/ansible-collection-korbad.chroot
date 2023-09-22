@@ -1,0 +1,4 @@
+---
+dependencies:
+  - korbad.chroot.arch_chroot_root_mount
+  - korbad.chroot.arch_chroot_esp_mount

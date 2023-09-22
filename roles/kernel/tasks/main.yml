@@ -1,0 +1,5 @@
+---
+- name: "Ensure {{ kernel_name }} is installed to chroot at {{ arch_chroot_mount_path }}"
+  command:
+    cmd: pacstrap -Kc {{ arch_chroot_mount_path }} {{ kernel_name }}
+  become: true
