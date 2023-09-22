@@ -1,4 +1,0 @@
-- name: Ensure that the dracut package is installed in chroot
-  command:
-    cmd: arch-chroot {{ arch_chroot_mount_path }} pacman -S --noconfirm dracut
-  become: true
