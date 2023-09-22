@@ -1,0 +1,9 @@
+- name: Ensure that the arch chroot ESP is unmounted before the root is unmounted, since the ESP is mounted within the root mount
+  include_role:
+    name: unmount_chroot_esp_mount
+
+- name: Ensure that the arch chroot root itself is unmounted
+  include_role:
+    name: unmount_disk_mount_point
+  vars:
+    disk_mount_point: "{{ arch_chroot_mount_path }}"
