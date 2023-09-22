@@ -11,9 +11,11 @@
 
 - name: Delete all files and directories (except the boot dir) in {{ arch_chroot_mount_path }}
   command:
-    cmd: "rm -rf {{ item.path }}"
-  with_items: "{{ files_to_delete.files }}"
-   when: "'{{ arch_chroot_mount_path }}/efi' not in item.path"
+    cmd: "rm -rf --one-file-system {{ file.path }}"
+  loop: "{{ files_to_delete.files }}"
+  loop_control:
+    loop_var: file
+  when: arch_chroot_mount_path ~ '/efi' not in file.path
   become: true
   vars:
     ansible_ssh_pipelining: true
