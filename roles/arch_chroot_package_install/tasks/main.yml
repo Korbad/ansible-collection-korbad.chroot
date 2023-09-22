@@ -3,3 +3,4 @@
     cmd: "arch-chroot {{ arch_chroot_mount_path }} pacman -S --noconfirm --needed {{ package_name }}"
   register: package_result
   become: true
+  changed_when: "'there is nothing to do' not in package_result.stdout"
