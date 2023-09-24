@@ -4,6 +4,6 @@
 
 - name: Ensure that the arch chroot root itself is unmounted
   include_role:
-    name: unmount_disk_mount_point
+    name: korbad.tools.unmount_disk_mount_point
   vars:
     disk_mount_point: "{{ arch_chroot_mount_path }}"
