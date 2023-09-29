@@ -1,0 +1,18 @@
+---
+- name: Include roles in specified order
+  include_role:
+    name: "{{ item.role }}"
+  loop:
+  - role: korbad.tools.prevent_active_partition_mangling
+  - role: korbad.workstation.reflector
+  - role: korbad.workstation.arch_install_scripts
+  - role: korbad.chroot.arch_chroot_root_mount
+  - role: korbad.chroot.arch_chroot_esp_mount
+  - role: korbad.tools.device_dict
+  - role: korbad.chroot.arch_chroot_rm_contents
+  - role: korbad.chroot.arch_chroot_base_configuration
+  - role: korbad.chroot.ssh_key_transfer_to_chroot
+  - role: korbad.chroot.arch_chroot_esp_configuration
+  - role: korbad.chroot.arch_chroot_networking_configuration
+  - role: korbad.chroot.unmount_chroot_root_mount
+  - role: korbad.chroot.unmount_chroot_esp_mount
