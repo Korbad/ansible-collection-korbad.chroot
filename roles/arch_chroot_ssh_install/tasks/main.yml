@@ -1,3 +1,13 @@
+- include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: openssh
+
+- include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: dhcpcd
+
 - name: Enable SSHD service
   command:
     cmd: arch-chroot {{ arch_chroot_mount_path }} systemctl enable sshd.service

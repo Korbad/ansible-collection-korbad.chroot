@@ -1,0 +1,6 @@
+---
+- name: Ensure that dracut is installed
+  include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: dracut

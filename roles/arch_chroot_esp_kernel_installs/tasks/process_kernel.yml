@@ -1,4 +1,4 @@
-- name: "Run kernel-install for {{ kernel_version }}"
+- name: "Run kernel-install for {{ kernel_version }} and root partition number {{ root_partition_number }}"
   command:
     cmd: "arch-chroot {{ arch_chroot_mount_path }} kernel-install add {{ kernel_version }} /usr/lib/modules/{{ kernel_version }}/vmlinuz"
   become: true

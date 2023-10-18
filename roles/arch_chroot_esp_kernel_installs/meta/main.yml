@@ -2,5 +2,3 @@
 dependencies:
   - korbad.chroot.arch_chroot_root_mount
   - korbad.chroot.arch_chroot_esp_mount
-  - name: arch_chroot_package_install
-    package_name: python

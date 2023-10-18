@@ -1,7 +1,3 @@
 ---
 dependencies:
   - name: arch_chroot_root_mount
-  - name: arch_chroot_package_install
-    package_name: openssh
-  - name: arch_chroot_package_install
-    package_name: dhcpcd

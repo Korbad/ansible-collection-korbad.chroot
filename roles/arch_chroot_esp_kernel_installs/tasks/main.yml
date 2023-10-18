@@ -1,4 +1,9 @@
 ---
+- include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: python
+
 - name: "Find all vmlinuz files in chroot at {{ arch_chroot_mount_path }}/usr/lib/modules"
   find:
     paths: "{{ arch_chroot_mount_path }}/usr/lib/modules"
@@ -7,11 +12,12 @@
     depth: 2
   register: found_kernels
 
-- name: Run kernel-install for each kernel
+- name: "Run kernel-install for each kernel for root partition number {{ root_partition_number }}"
   include_tasks: process_kernel.yml
   vars:
-    kernel_version_path_list: "{{ item.path | split('/') }}"
+    kernel_version_path_list: "{{ found_kernel.path | split('/') }}"
     kernel_version: "{{ kernel_version_path_list[-2]}}"
   loop: "{{ found_kernels.files }}"
   loop_control:
     label: "{{ kernel_version }}"
+    loop_var: found_kernel

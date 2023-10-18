@@ -1,7 +1,0 @@
----
-dependencies:
-  - name: arch_chroot_root_mount
-  - name: arch_chroot_package_install
-    package_name: sudo
-  - name: arch_chroot_package_install
-    package_name: python

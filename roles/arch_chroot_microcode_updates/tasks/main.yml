@@ -1,0 +1,10 @@
+---
+- include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: intel-ucode
+
+- include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: amd-ucode
