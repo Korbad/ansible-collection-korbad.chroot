@@ -1,0 +1,36 @@
+---
+- include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: "{{ xorg_package_name }}"
+  loop:
+    - xorg-xclock
+    - xorg-server
+    - xorg-fonts
+    - xorg-xinit
+    - xorg-twm
+    - xorg-apps
+    - xorg-fonts-misc
+    - xorg-xinput
+    - xf86-input-libinput
+  loop_control:
+    loop_var: xorg_package_name
+
+- name: Configure ~/.xserverrc for user using template
+  ansible.builtin.template:
+    src: xserverrc.j2
+    dest: "{{ arch_chroot_root_user_home_path }}/.xserverrc"
+    mode: '0700'
+    owner: "{{ github_user_uid.stdout }}"
+    group: "{{ github_user_gid.stdout }}"
+  become: true
+
+- name: Create symlink for libinput configuration
+  file:
+    src: /usr/share/X11/xorg.conf.d/40-libinput.conf
+    dest: "{{ arch_chroot_mount_path }}/etc/X11/xorg.conf.d/40-libinput.conf"
+    state: link
+    mode: '0700'
+    owner: "{{ github_user_uid.stdout }}"
+    group: "{{ github_user_gid.stdout }}"
+  become: true

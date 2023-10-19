@@ -1,0 +1,1 @@
+arch_chroot_root_user_home_path: "{{ arch_chroot_mount_path }}/home/{{ github_username }}"
