@@ -9,8 +9,8 @@
   ansible.builtin.copy:
     src: "{{ item.path }}"
     dest: "{{ arch_chroot_mount_path }}/home/{{ github_username }}/.ssh/{{ item.path | basename }}"
-    owner: "{{ korbad_uid.stdout }}"
-    group: "{{ korbad_gid.stdout }}"
+    owner: "{{ github_user_uid.stdout }}"
+    group: "{{ github_user_gid.stdout }}"
     mode: preserve
     remote_src: true
   loop: "{{ ssh_files_to_copy.files }}"

@@ -21,16 +21,16 @@
   vars:
     ansible_ssh_pipelining: yes
 
-- name: Get UID and GID of korbad inside the chroot
-  shell: arch-chroot {{ arch_chroot_mount_path }} id -u korbad
+- name: Get UID and GID of {{ github_username }} inside the chroot
+  shell: arch-chroot {{ arch_chroot_mount_path }} id -u {{ github_username }}
   changed_when: false
-  register: korbad_uid
+  register: github_user_uid
   become: true
 
-- name: Get GID of korbad inside the chroot
-  shell: arch-chroot {{ arch_chroot_mount_path }} id -g korbad
+- name: Get GID of {{ github_username }} inside the chroot
+  shell: arch-chroot {{ arch_chroot_mount_path }} id -g {{ github_username }}
   changed_when: false
-  register: korbad_gid
+  register: github_user_gid
   become: true
 
 - name: Create .ssh directory for user
@@ -38,8 +38,8 @@
     path: "{{ arch_chroot_mount_path }}/home/{{ github_username }}/.ssh"
     state: directory
     mode: '0700'
-    owner: "{{ korbad_uid.stdout }}"
-    group: "{{ korbad_gid.stdout }}"
+    owner: "{{ github_user_uid.stdout }}"
+    group: "{{ github_user_gid.stdout }}"
   become: true
 
 - name: Add public key to authorized_keys
@@ -55,8 +55,8 @@
 - name: Update ownership of authorized_keys
   ansible.builtin.file:
     path: "{{ arch_chroot_mount_path }}/home/{{ github_username }}/.ssh/authorized_keys"
-    owner: "{{ korbad_uid.stdout }}"
-    group: "{{ korbad_gid.stdout }}"
+    owner: "{{ github_user_uid.stdout }}"
+    group: "{{ github_user_gid.stdout }}"
     mode: '0600'
   become: true
 
