@@ -18,7 +18,20 @@
   - role: korbad.chroot.arch_chroot_ssh_install
   - role: korbad.chroot.arch_chroot_optional_packages
   - role: korbad.chroot.arch_chroot_sshd_config
-  - role: korbad.chroot.arch_chroot_korbad_user
-  - role: korbad.chroot.arch_chroot_auto_login
   - role: korbad.chroot.arch_chroot_network_manager
   - role: korbad.chroot.arch_chroot_nss_mdns
+
+- name: Include roles in specified order for base_user_config
+  include_role:
+    name: "{{ base_user_config_role.role }}"
+  loop_control:
+    loop_var: base_user_config_role
+  loop:
+  - role: korbad.chroot.arch_chroot_root_mount
+  - role: korbad.chroot.arch_chroot_esp_mount
+  - role: korbad.tools.device_dict
+  - role: korbad.chroot.arch_chroot_github_user
+  - role: korbad.chroot.arch_chroot_auto_login
+  - role: korbad.chroot.x11
+  - role: korbad.chroot.bash_profile
+  - role: korbad.chroot.i3
