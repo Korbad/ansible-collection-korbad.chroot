@@ -1,0 +1,8 @@
+- name: Create .bash_profile with startx configuration using a template
+  template:
+    src: bash_profile.j2
+    dest: "{{ arch_chroot_root_user_home_path }}/.bash_profile"
+    mode: '0700'
+    owner: "{{ github_user_uid.stdout }}"
+    group: "{{ github_user_gid.stdout }}"
+  become: true
