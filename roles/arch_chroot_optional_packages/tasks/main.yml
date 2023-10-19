@@ -13,3 +13,9 @@
     name: arch_chroot_package_install
   vars:
     package_name: terminator
+
+- name: Include dmenu so i3 has an app launcher
+  include_role:
+    name: arch_chroot_package_install
+  vars:
+    package_name: dmenu
