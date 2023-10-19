@@ -1,5 +1,13 @@
 ---
-dependencies:
+- name: Include roles in specified order for base_config
+  include_role:
+    name: "{{ base_config_role.role }}"
+  loop_control:
+    loop_var: base_config_role
+  loop:
+  - role: korbad.chroot.arch_chroot_root_mount
+  - role: korbad.chroot.arch_chroot_esp_mount
+  - role: korbad.tools.device_dict
   - role: korbad.chroot.arch_chroot_base
   - role: korbad.chroot.arch_chroot_hostname
   - role: korbad.chroot.arch_chroot_timezone
