@@ -20,3 +20,5 @@
   - role: korbad.chroot.arch_chroot_sshd_config
   - role: korbad.chroot.arch_chroot_korbad_user
   - role: korbad.chroot.arch_chroot_auto_login
+  - role: korbad.chroot.arch_chroot_network_manager
+  - role: korbad.chroot.arch_chroot_nss_mdns

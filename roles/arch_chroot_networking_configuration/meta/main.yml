@@ -1,4 +1,0 @@
----
-dependencies:
-  - role: korbad.chroot.arch_chroot_network_manager
-  - role: korbad.chroot.arch_chroot_nss_mdns
