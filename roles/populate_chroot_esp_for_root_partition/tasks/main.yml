@@ -1,8 +1,0 @@
----
-- name: Include roles in specified order
-  include_role:
-    name: "{{ item.role }}"
-  loop:
-    - role: korbad.chroot.arch_chroot_root_mount
-    - role: korbad.chroot.arch_chroot_esp_mount
-    - role: korbad.chroot.arch_chroot_esp_configuration
