@@ -1,15 +1,18 @@
 ---
-- include_role:
+- name: Include sudo so Ansible can use 'become' via sudo
+  include_role:
     name: arch_chroot_package_install
   vars:
     package_name: sudo
 
-- include_role:
+- name: Include python so that Ansible can automate against this host
+  include_role:
     name: arch_chroot_package_install
   vars:
     package_name: python
 
-- include_role:
+- name: Include terminator so i3 has a nice default terminal to launch
+  include_role:
     name: arch_chroot_package_install
   vars:
     package_name: terminator
